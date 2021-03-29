@@ -1,0 +1,27 @@
+@import "logo.png";
+body {
+  background: linear-gradient(316.86deg, #260d6d 56.13%, #6710da 97.68%);
+  margin: 0;
+  padding: 0;
+}
+html {
+  min-height: 100%;
+}
+.nav-item {
+  list-style: none;
+}
+
+#account {
+  color: aliceblue;
+  font-size: 100%;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.text-secondary {
+  vertical-align: middle;
+}
+.logo {
+  background-image: "logo.png";
+  width: 20;
+  height: 20;
+  font-size: 10;
+}
