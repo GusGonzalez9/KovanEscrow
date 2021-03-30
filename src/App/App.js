@@ -4,12 +4,10 @@ import { Route, Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Home from "../Components/Home";
 function App() {
-  const [connect, setConnect] = React.useState(false);
   const [accounts, setAccounts] = React.useState([]);
   const [balance, setBalance] = React.useState(false);
   let loadWeb3 = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
-    const network = await web3.eth.net.getNetworkType();
     const accounts = await web3.eth.getAccounts();
 
     if (accounts[0]) {
