@@ -8,6 +8,8 @@ import {
   Badge,
   MenuItem,
   Menu,
+  Typography,
+  Grid
 } from "@material-ui/core";
 
 import SearchIcon from "@material-ui/icons/Search";
@@ -68,21 +70,19 @@ const useStyles = makeStyles((theme) => ({
     },
     color: "white",
   },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
+
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
+    textSecondary: {
+      fontSize: "100%"
+    },
   },
 }));
 
-export default function Navbar({ account }) {
+export default function Navbar({ account, balance }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -190,15 +190,11 @@ export default function Navbar({ account }) {
             />
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <ul className="navbar-nav px-3">
-              <li className="nav-item text-nowrap d-none d-sm-none d-sm-block">
-                <small className="text-secondary">
-                  <small id="account">{account}</small>
-                </small>
-                {account.length ? (
+          <Grid className={classes.sectionDesktop}>
+            {account.length ? (
+              <Grid>
                   <img
-                    className="ml-2"
+                    className={classes.pictures}
                     width="30"
                     height="30"
                     src={`data:image/png;base64,${new Identicon(
@@ -207,12 +203,11 @@ export default function Navbar({ account }) {
                     ).toString()}`}
                     alt=""
                   />
-                ) : (
-                  <span>No estas conectado a tu wallet</span>
-                )}
-              </li>
-            </ul>
-          </div>
+              </Grid>
+            ) : (
+              <Typography>No estas conectado a tu wallet</Typography>
+            )}
+          </Grid>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

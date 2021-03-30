@@ -12,11 +12,13 @@ function App() {
     const network = await web3.eth.net.getNetworkType();
     const accounts = await web3.eth.getAccounts();
 
-    let balance = await web3.eth
-      .getBalance(accounts[0])
-      .then((b) => b * 10 ** -18);
-    setAccounts(accounts);
-    setBalance(balance);
+    if (accounts[0]) {
+      let balance = await web3.eth
+        .getBalance(accounts[0])
+        .then((b) => b * 10 ** -18);
+      setAccounts(accounts);
+      setBalance(balance);
+    }
   };
 
   React.useEffect(async () => {
@@ -25,8 +27,8 @@ function App() {
 
   return (
     <div>
-      <Navbar account={accounts} />
-      <Home balance={balance} />
+      <Navbar account={accounts} balance={balance} />
+      <Home account={accounts} balance={balance} />
     </div>
   );
 }
